@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | Growth Marketing & Tech Studio de Élite</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Syne (Títulos) y Plus Jakarta Sans (Cuerpo/Métricas) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-display {
+            font-family: 'Syne', sans-serif;
+        }
+        /* Personalización de barra de scroll con paleta de marca */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080C14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7B2CBF;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F5D4;
+        }
+        /* Efecto de degradado de malla mística (Aura effect) */
+        .aura-glow {
+            filter: blur(140px);
+            opacity: 0.15;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+    </style>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Paleta corporativa de la marca AURA del manual de marca Diseño sin título_3.pdf
+                        auraDark: '#080C14',     // Space Obsidian
+                        auraViolet: '#7B2CBF',   // Royal Aura Violet
+                        auraCyan: '#00F5D4',     // Growth Mint Cyan
+                        auraAmber: '#FF9E00',    // Flare Amber
+                        slateDark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-auraDark text-slate-100 antialiased selection:bg-auraViolet selection:text-white overflow-x-hidden">
+
+    <!-- DEGRADADOS DE FONDO MÍSTICOS (Aura Gradients) -->
+    <div class="absolute top-10 left-1/4 w-[500px] h-[500px] rounded-full bg-auraViolet aura-glow"></div>
+    <div class="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-auraCyan aura-glow"></div>
+    <div class="absolute bottom-1/4 left-10 w-[600px] h-[600px] rounded-full bg-auraViolet aura-glow"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-auraDark/80 border-b border-slate-800/40" id="main-header">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-auraViolet to-auraCyan flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-auraViolet/30 transform group-hover:rotate-12 transition-transform duration-300">
+                    A
+                </div>
+                <span class="text-xl font-display font-extrabold tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">AURA</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#beneficios" class="hover:text-auraCyan transition-colors">Propuesta</a>
+                <a href="#formulas" class="hover:text-auraCyan transition-colors">Fórmulas</a>
+                <a href="#proyectos" class="hover:text-auraCyan transition-colors">Proyectos</a>
+                <a href="#faq" class="hover:text-auraCyan transition-colors">FAQ</a>
+            </nav>
+
+            <!-- Call to Action -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#contacto" class="rounded-full bg-slate-900 border border-slate-800 px-6 py-2.5 text-sm font-medium text-slate-300 hover:text-white hover:border-auraViolet transition-all duration-300">
+                    Auditar Mi Infraestructura
+                </a>
+                <a href="#contacto" class="rounded-full bg-gradient-to-r from-auraViolet to-indigo-700 hover:from-auraViolet hover:to-auraCyan px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-auraViolet/20 transition-all duration-300 hover:scale-[1.02]">
+                    Agendar Llamada
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1.5 focus:outline-none z-50" id="mobile-menu-btn" aria-label="Abrir menú">
+                <span class="w-6 h-0.5 bg-slate-300 transition-all duration-300" id="bar1"></span>
+                <span class="w-6 h-0.5 bg-slate-300 transition-all duration-300" id="bar2"></span>
+                <span class="w-6 h-0.5 bg-slate-300 transition-all duration-300" id="bar3"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div class="fixed inset-y-0 right-0 w-full max-w-sm bg-[#080C14] border-l border-slate-800/80 p-6 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-40 flex flex-col justify-between" id="mobile-drawer">
+            <div class="flex flex-col gap-8 mt-20">
+                <a href="#beneficios" class="text-xl font-display font-semibold text-slate-200 hover:text-auraCyan transition-colors py-2 border-b border-slate-800/40">Propuesta</a>
+                <a href="#formulas" class="text-xl font-display font-semibold text-slate-200 hover:text-auraCyan transition-colors py-2 border-b border-slate-800/40">Fórmulas</a>
+                <a href="#proyectos" class="text-xl font-display font-semibold text-slate-200 hover:text-auraCyan transition-colors py-2 border-b border-slate-800/40">Proyectos</a>
+                <a href="#faq" class="text-xl font-display font-semibold text-slate-200 hover:text-auraCyan transition-colors py-2 border-b border-slate-800/40">FAQ</a>
+            </div>
+            <div class="flex flex-col gap-4 mt-auto">
+                <a href="#contacto" class="text-center rounded-xl bg-slate-900 border border-slate-800 py-3.5 font-medium text-slate-300">
+                    Auditar Mi Infraestructura
+                </a>
+                <a href="#contacto" class="text-center rounded-xl bg-gradient-to-r from-auraViolet to-indigo-700 py-3.5 font-semibold text-white shadow-lg shadow-auraViolet/20">
+                    Agendar Llamada
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-36 pb-24 md:pt-48 md:pb-36 min-h-screen flex items-center overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <!-- Hero Left Info -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 bg-slate-900/60 border border-auraViolet/30 rounded-full py-1.5 px-4 text-xs font-semibold tracking-wide text-auraCyan">
+                        <span class="flex h-2.5 w-2.5 relative">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-auraCyan opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-auraCyan"></span>
+                        </span>
+                        FIRMA HÍBRIDA DE ÉLITE: GROWTH & TECH STUDIO
+                    </div>
+
+                    <!-- Headline -->
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-[1.1] text-white">
+                        El código que impulsa tu crecimiento. <span class="bg-gradient-to-r from-auraCyan via-auraViolet to-purple-400 bg-clip-text text-transparent">El brillo que define tu impacto.</span>
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Fusionamos el marketing de crecimiento científico (Growth) con el desarrollo de software a medida e Inteligencia Artificial premium. Convertimos la complejidad técnica en motores de ventas automáticos y escalables.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#contacto" class="w-full sm:w-auto text-center rounded-xl bg-gradient-to-r from-auraViolet to-indigo-700 hover:from-auraViolet hover:to-auraCyan px-8 py-4 font-bold text-white shadow-xl shadow-auraViolet/35 transition-all hover:scale-[1.02] hover:-translate-y-0.5 active:translate-y-0">
+                            Iniciar Auditoría Gratuita
+                        </a>
+                        <a href="#proyectos" class="w-full sm:w-auto text-center rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 hover:bg-slate-800/80 px-8 py-4 font-semibold text-slate-300 transition-all hover:-translate-y-0.5 active:translate-y-0">
+                            Ver Casos De Éxito
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators matching Brand Values -->
+                    <div class="pt-6 border-t border-slate-800/80 flex flex-wrap gap-y-4 gap-x-8 justify-center lg:justify-start items-center text-xs text-slate-400 uppercase tracking-widest font-semibold">
+                        <div class="flex items-center gap-2">
+                            <span class="text-auraCyan font-bold">LTV / CAC &ge; 3:1</span> Relación Financiera Garantizada
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-auraViolet font-bold">100% SECURE</span> Software de Grado Corporativo
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Interactive Mockup -->
+                <div class="lg:col-span-5 relative">
+                    <!-- Technical Glassmorphism Card -->
+                    <div class="relative bg-slateDark/80 border border-auraViolet/20 rounded-2xl p-6 shadow-2xl backdrop-blur-xl transform hover:scale-[1.01] transition-all duration-300">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                            <div class="flex gap-1.5">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 block"></span>
+                                <span class="w-3 h-3 rounded-full bg-auraAmber block"></span>
+                                <span class="w-3 h-3 rounded-full bg-auraCyan block"></span>
+                            </div>
+                            <span class="text-xs text-slate-500 font-mono">aura-terminal.log</span>
+                        </div>
+
+                        <!-- Mini Code & Formula Box -->
+                        <div class="space-y-4 text-xs font-mono text-slate-300">
+                            <p class="text-[#888]">// Ejecutando algoritmos de conversión de AURA...</p>
+                            <div class="bg-auraDark/50 p-4 rounded-lg border border-slate-800 text-left">
+                                <p><span class="text-auraCyan">const</span> studio = "AURA";</p>
+                                <p><span class="text-auraCyan">const</span> healthRatio = LTV / CAC;</p>
+                                <p><span class="text-auraCyan">if</span> (healthRatio &gt;= <span class="text-auraAmber">3</span>) {</p>
+                                <p class="pl-4 text-auraCyan">scaleUpBusiness();</p>
+                                <p class="pl-4 text-emerald-400">// Conversión Maximizada</p>
+                                <p>}</p>
+                            </div>
+
+                            <!-- Conversion Metrics Representation -->
+                            <div class="grid grid-cols-2 gap-4 pt-2">
+                                <div class="bg-slateDark/90 p-3 rounded-xl border border-slate-800">
+                                    <p class="text-[10px] text-slate-500 font-sans uppercase">Retorno (ROAS) Promedio</p>
+                                    <p class="text-base font-bold text-white font-sans mt-0.5">4.8x ROAS</p>
+                                </div>
+                                <div class="bg-slateDark/90 p-3 rounded-xl border border-slate-800">
+                                    <p class="text-[10px] text-slate-500 font-sans uppercase">Velocidad de Carga</p>
+                                    <p class="text-base font-bold text-auraCyan font-sans mt-0.5">A+ (99/100)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ambient Flare Floating behind -->
+                    <div class="absolute -bottom-6 -right-6 bg-auraCyan/20 border border-auraCyan/40 p-3 rounded-xl shadow-lg hidden sm:flex items-center gap-3 backdrop-blur-md">
+                        <div class="w-8 h-8 rounded-lg bg-auraCyan flex items-center justify-center text-auraDark">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase text-slate-400 tracking-wider font-sans">Retención del Cliente</p>
+                            <p class="text-xs font-bold text-white font-sans">92% CRR</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPUESTA DE VALOR / BENEFICIOS -->
+    <section id="beneficios" class="py-24 border-t border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest bg-gradient-to-r from-auraCyan to-auraViolet bg-clip-text text-transparent">NUESTROS PILARES</span>
+                <h2 class="text-3xl md:text-5xl font-display font-extrabold text-white">Ingeniería para convertir, estrategia para escalar</h2>
+                <p class="text-slate-400 text-lg">Acabamos con la desconexión entre marketing y tecnología. Fusionamos ambos mundos en una sola firma boutique.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Beneficio 1 -->
+                <div class="group bg-slate-900/30 border border-slate-800 p-8 rounded-2xl hover:bg-slate-900/80 hover:border-auraViolet/50 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-auraViolet/10 border border-auraViolet/20 flex items-center justify-center text-auraCyan mb-6 group-hover:bg-auraViolet group-hover:text-white transition-all duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-3">Tech Studio Premium</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Desarrollamos aplicaciones y embudos de alta gama optimizados a nivel de servidor. Sin plantillas pesadas ni código innecesario. Experiencias fluidas e hiper-rápidas.
+                    </p>
+                </div>
+
+                <!-- Beneficio 2 -->
+                <div class="group bg-slate-900/30 border border-slate-800 p-8 rounded-2xl hover:bg-slate-900/80 hover:border-auraViolet/50 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-auraViolet/10 border border-auraViolet/20 flex items-center justify-center text-auraCyan mb-6 group-hover:bg-auraViolet group-hover:text-white transition-all duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-3">Marketing de Crecimiento</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Analizamos cada etapa de adquisición y retención basándonos en la ciencia de datos. Diseñamos tus flujos para maximizar conversiones y disminuir tus costos de adquisición (CAC).
+                    </p>
+                </div>
+
+                <!-- Beneficio 3 -->
+                <div class="group bg-slate-900/30 border border-slate-800 p-8 rounded-2xl hover:bg-slate-900/80 hover:border-auraViolet/50 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-auraViolet/10 border border-auraViolet/20 flex items-center justify-center text-auraCyan mb-6 group-hover:bg-auraViolet group-hover:text-white transition-all duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                    </div>
+                    <h3 class="text-xl font-display font-bold text-white mb-3">Automatización e IA</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Integramos agentes inteligentes en tus flujos de trabajo operativos y comerciales para acelerar respuestas, calificar leads automáticamente y liberar la carga de tu equipo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÉTRICAS Y FÓRMULAS ESTRATÉGICAS -->
+    <section id="formulas" class="py-24 bg-slateDark/30 border-y border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-xs font-bold uppercase tracking-widest text-auraCyan font-display">DECISIONES BASADAS EN DATOS</span>
+                    <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white">Las matemáticas de tu escala</h2>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        En AURA no creemos en "likes" o métricas de vanidad. Auditamos y optimizamos las tres ecuaciones financieras fundamentales que determinan la salud y valor de tu compañía:
+                    </p>
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-auraViolet/20 flex items-center justify-center text-auraCyan font-bold text-sm">1</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">ROAS (Retorno Publicitario)</h4>
+                                <p class="text-xs text-slate-500">Optimización de canales de pauta maximizando el retorno de tu inversión.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-auraViolet/20 flex items-center justify-center text-auraCyan font-bold text-sm">2</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">CAC (Costo de Adquisición de Clientes)</h4>
+                                <p class="text-xs text-slate-500">Ingeniería en embudos para reducir al máximo lo que te cuesta traer un cliente nuevo.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-8 h-8 rounded-full bg-auraViolet/20 flex items-center justify-center text-auraCyan font-bold text-sm">3</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">CRR (Tasa de Retención de Clientes)</h4>
+                                <p class="text-xs text-slate-500">Modelación de retención para maximizar el valor de tiempo de vida (LTV).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Math display -->
+                <div class="space-y-6">
+                    <div class="bg-auraDark border border-slate-800 p-8 rounded-2xl space-y-6 font-mono text-left relative overflow-hidden">
+                        <div class="absolute -top-12 -right-12 w-24 h-24 bg-auraViolet/20 rounded-full blur-2xl"></div>
+                        
+                        <!-- Ecuación 1 -->
+                        <div class="pb-6 border-b border-slate-800/60">
+                            <p class="text-xs text-slate-500">// Relación Financiera Clave</p>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-sm font-bold text-white">LTV / CAC RATIO</span>
+                                <span class="text-auraCyan font-bold">&ge; 3:1</span>
+                            </div>
+                        </div>
+
+                        <!-- Ecuación 2 -->
+                        <div class="pb-6 border-b border-slate-800/60">
+                            <p class="text-xs text-slate-500">// Retorno Publicitario</p>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-sm font-bold text-white">ROAS = Ingresos / Inversión</span>
+                                <span class="text-auraCyan font-bold">4.8x avg</span>
+                            </div>
+                        </div>
+
+                        <!-- Ecuación 3 -->
+                        <div class="pt-2">
+                            <p class="text-xs text-slate-500">// Fórmula de Retención (CRR)</p>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-sm font-bold text-white">CRR = ((E - N) / S) x 100</span>
+                                <span class="text-auraAmber font-bold">92%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTAFOLIO DE PROYECTOS -->
+    <section id="proyectos" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-auraCyan font-display">CASOS DE ESTUDIO</span>
+                    <h2 class="text-3xl md:text-5xl font-display font-extrabold text-white mt-2">Resultados que avalan la técnica</h2>
+                </div>
+                <!-- Interactive Filter Tabs -->
+                <div class="flex gap-2 p-1 bg-slate-900 border border-slate-800 rounded-xl overflow-x-auto w-full md:w-auto" id="filter-container">
+                    <button class="px-5 py-2.5 text-xs font-semibold rounded-lg bg-auraViolet text-white transition-all duration-300 filter-btn" data-filter="all">Todos</button>
+                    <button class="px-5 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-slate-100 transition-all duration-300 filter-btn" data-filter="saas">SaaS & Apps</button>
+                    <button class="px-5 py-2.5 text-xs font-semibold rounded-lg text-slate-400 hover:text-slate-100 transition-all duration-300 filter-btn" data-filter="growth">Campañas de Growth</button>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                <!-- Project 1 (SaaS) -->
+                <div class="group bg-slate-900/40 border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl hover:border-auraViolet/40 transition-all duration-300 project-card" data-category="saas">
+                    <div class="h-56 bg-gradient-to-tr from-auraViolet/40 to-indigo-900/20 relative overflow-hidden flex items-center justify-center p-6 border-b border-slate-800">
+                        <div class="w-full h-full bg-[#080C14] border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-mono text-auraCyan">AURA CRM</span>
+                                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded-full">Activo</span>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="h-2 w-full bg-slate-800 rounded"></div>
+                                <div class="h-2 w-4/5 bg-slate-800 rounded"></div>
+                            </div>
+                            <div class="h-8 w-full bg-auraViolet/10 border border-auraViolet/20 rounded flex items-center justify-center text-[10px] font-bold text-auraCyan">Escalabilidad de Plataforma</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-auraCyan uppercase tracking-widest font-display">Ingeniería SaaS</span>
+                        <h3 class="text-lg font-bold text-white mt-1">AuraCRM Platform</h3>
+                        <p class="text-slate-400 text-sm mt-2">Plataforma de alta transaccionalidad con flujos personalizados de conversión de leads. Aumento del 214% en registros.</p>
+                    </div>
+                </div>
+
+                <!-- Project 2 (Growth) -->
+                <div class="group bg-slate-900/40 border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl hover:border-auraViolet/40 transition-all duration-300 project-card" data-category="growth">
+                    <div class="h-56 bg-gradient-to-tr from-auraCyan/20 to-indigo-900/20 relative overflow-hidden flex items-center justify-center p-6 border-b border-slate-800">
+                        <div class="w-full h-full bg-[#080C14] border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-mono text-auraAmber">APEX DIGITAL</span>
+                                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded-full">Funnel Activo</span>
+                            </div>
+                            <div class="flex gap-2 items-end h-16">
+                                <div class="w-full bg-slate-800 h-1/3 rounded"></div>
+                                <div class="w-full bg-slate-800 h-2/3 rounded"></div>
+                                <div class="w-full bg-gradient-to-t from-auraViolet to-auraCyan h-full rounded shadow-lg shadow-auraViolet/25"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-auraCyan uppercase tracking-widest font-display">Conversión Avanzada</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Apex High-Ticket Funnel</h3>
+                        <p class="text-slate-400 text-sm mt-2">Modelado completo de embudo de marketing con pauta digital pagada y embudo automatizado. Tasa de conversión del 8%.</p>
+                    </div>
+                </div>
+
+                <!-- Project 3 (SaaS) -->
+                <div class="group bg-slate-900/40 border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl hover:border-auraViolet/40 transition-all duration-300 project-card" data-category="saas">
+                    <div class="h-56 bg-gradient-to-tr from-purple-900/30 to-pink-900/10 relative overflow-hidden flex items-center justify-center p-6 border-b border-slate-800">
+                        <div class="w-full h-full bg-[#080C14] border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                            <div class="flex justify-between items-center">
+                                <span class="text-[10px] font-mono text-white">ZENITH DASH</span>
+                                <span class="text-[10px] bg-auraCyan/10 text-auraCyan font-bold px-2 py-0.5 rounded-full">Pro</span>
+                            </div>
+                            <div class="space-y-1">
+                                <div class="h-2 w-full bg-slate-800 rounded"></div>
+                                <div class="h-4 w-full bg-auraViolet/20 rounded flex items-center justify-between px-2 text-[8px] text-white"><span>LTV/CAC</span><span>4.1x</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-auraCyan uppercase tracking-widest font-display">Dashboards Analíticos</span>
+                        <h3 class="text-lg font-bold text-white mt-1">Zenith Intelligence</h3>
+                        <p class="text-slate-400 text-sm mt-2">Plataforma interna para análisis de comportamiento de usuarios con integraciones de Inteligencia Artificial avanzadas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 bg-slateDark/20 border-t border-slate-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 space-y-4">
+                <span class="text-xs font-bold uppercase tracking-widest text-auraCyan font-display">RESOLVIENDO DUDAS</span>
+                <h2 class="text-3xl md:text-5xl font-display font-extrabold text-white">Preguntas frecuentes</h2>
+                <p class="text-slate-400">Todo lo que necesitas conocer antes de iniciar tu escalado tecnológico.</p>
+            </div>
+
+            <!-- FAQ Acordeón -->
+            <div class="space-y-4" id="faq-container">
+                <!-- Pregunta 1 -->
+                <div class="border border-slate-800 bg-slate-900/20 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none faq-btn">
+                        <span class="font-semibold text-white">¿Cuál es la diferencia entre AURA y una agencia tradicional?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 faq-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                        <div class="p-6 pt-0 text-slate-400 text-sm leading-relaxed border-t border-slate-800/50">
+                            Las agencias tradicionales se enfocan en conseguir clics o likes sin entender de código ni de arquitectura técnica. Por otro lado, los estudios de desarrollo de software tradicionales te entregan una web técnicamente perfecta pero completamente ciega a nivel de conversión de ventas. En AURA eliminamos esa brecha, ofreciendo el diseño técnico impecable que tu negocio necesita y el crecimiento que tus inversionistas exigen.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="border border-slate-800 bg-slate-900/20 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none faq-btn">
+                        <span class="font-semibold text-white">¿Cómo sé si mi negocio califica para trabajar con AURA?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 faq-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                        <div class="p-6 pt-0 text-slate-400 text-sm leading-relaxed border-t border-slate-800/50">
+                            Nos dirigimos principalmente a fundadores, CMOs y directores de empresas en etapas de escalamiento (Scale-ups, E-commerce avanzados y Startups en etapas Pre-Seed o Seed) que facturen más de $50,000 USD anuales, que necesiten optimizar la salud de su negocio (LTV/CAC) y escalar sus operaciones comerciales.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="border border-slate-800 bg-slate-900/20 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-6 text-left focus:outline-none faq-btn">
+                        <span class="font-semibold text-white">¿En qué consiste la auditoría gratuita de infraestructura?</span>
+                        <svg class="w-5 h-5 text-slate-400 transition-transform duration-300 faq-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                        <div class="p-6 pt-0 text-slate-400 text-sm leading-relaxed border-t border-slate-800/50">
+                            Realizamos un análisis técnico sin costo de tu sitio web o aplicación actual. Evaluamos métricas clave de velocidad, SEO, experiencia de usuario (UX/UI) y fugas en tu pasarela de pagos. Te entregamos un diagnóstico accionable para optimizar tu tasa de conversión.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section id="contacto" class="py-24 relative overflow-hidden bg-slateDark/20">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Details Info Column -->
+                <div class="lg:col-span-5 space-y-8">
+                    <span class="text-xs font-bold uppercase tracking-widest text-auraCyan font-display">AGENDA HOY</span>
+                    <h2 class="text-3xl md:text-5xl font-display font-extrabold text-white leading-tight">Optimiza tu salud financiera hoy</h2>
+                    <p class="text-slate-400 text-base leading-relaxed">
+                        Completa el formulario y auditemos tu arquitectura actual sin costo alguno. Diseñamos la tecnología que tu negocio requiere.
+                    </p>
+
+                    <div class="space-y-6 pt-6 border-t border-slate-800">
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-auraCyan">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">ENVÍANOS UN EMAIL</p>
+                                <a href="mailto:proyectos@vortex.agency" class="text-sm font-semibold text-white hover:text-auraCyan transition-colors">proyectos@vortex.agency</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-auraCyan">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">HABLEMOS DE NEGOCIOS</p>
+                                <a href="tel:+573001234567" class="text-sm font-semibold text-white hover:text-auraCyan transition-colors">+57 (300) 123-4567</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Form Column -->
+                <div class="lg:col-span-7">
+                    <div class="bg-[#0f172a]/70 border border-slate-800 rounded-2xl p-8 md:p-10 shadow-2xl backdrop-blur-xl relative" id="form-container">
+                        
+                        <!-- Form Header -->
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">Cuéntanos sobre tu proyecto</h3>
+                            <p class="text-slate-400 text-xs font-medium" id="form-status-msg">Recibirás tu diagnóstico técnico en menos de 24 horas de forma automática.</p>
+                        </div>
+
+                        <!-- Form -->
+                        <form id="contact-form" class="space-y-6">
+                            <!-- Name -->
+                            <div>
+                                <label for="name" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Nombre Completo *</label>
+                                <input type="text" id="name" name="name" required class="w-full bg-auraDark/60 border border-slate-800 hover:border-slate-700 focus:border-auraViolet focus:ring-2 focus:ring-auraViolet/20 rounded-xl px-4 py-3.5 text-slate-200 text-sm outline-none transition-all duration-300 placeholder:text-slate-600" placeholder="Ej: Mateo El Fundador">
+                            </div>
+
+                            <!-- Grid Email & Phone -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="email" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Correo Electrónico *</label>
+                                    <input type="email" id="email" name="email" required class="w-full bg-auraDark/60 border border-slate-800 hover:border-slate-700 focus:border-auraViolet focus:ring-2 focus:ring-auraViolet/20 rounded-xl px-4 py-3.5 text-slate-200 text-sm outline-none transition-all duration-300 placeholder:text-slate-600" placeholder="Ej: mateo@scaleup.com">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">WhatsApp / Teléfono</label>
+                                    <input type="tel" id="phone" name="phone" class="w-full bg-auraDark/60 border border-slate-800 hover:border-slate-700 focus:border-auraViolet focus:ring-2 focus:ring-auraViolet/20 rounded-xl px-4 py-3.5 text-slate-200 text-sm outline-none transition-all duration-300 placeholder:text-slate-600" placeholder="Ej: +57 300 123 4567">
+                                </div>
+                            </div>
+
+                            <!-- Budget Selector (Gamified UI) -->
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Presupuesto Estimado ($ USD)</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="budget" value="under_1k" class="peer sr-only" checked>
+                                        <div class="text-center p-3 text-xs font-medium rounded-xl border border-slate-800 bg-auraDark/40 text-slate-400 hover:bg-auraDark/80 peer-checked:border-auraViolet peer-checked:text-auraCyan peer-checked:bg-auraViolet/10 transition-all">
+                                            &lt; $1,000
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="budget" value="1k_3k" class="peer sr-only">
+                                        <div class="text-center p-3 text-xs font-medium rounded-xl border border-slate-800 bg-auraDark/40 text-slate-400 hover:bg-auraDark/80 peer-checked:border-auraViolet peer-checked:text-auraCyan peer-checked:bg-auraViolet/10 transition-all">
+                                            $1K - $3K
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="budget" value="3k_5k" class="peer sr-only">
+                                        <div class="text-center p-3 text-xs font-medium rounded-xl border border-slate-800 bg-auraDark/40 text-slate-400 hover:bg-auraDark/80 peer-checked:border-auraViolet peer-checked:text-auraCyan peer-checked:bg-auraViolet/10 transition-all">
+                                            $3K - $5K
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="budget" value="above_5k" class="peer sr-only">
+                                        <div class="text-center p-3 text-xs font-medium rounded-xl border border-slate-800 bg-auraDark/40 text-slate-400 hover:bg-auraDark/80 peer-checked:border-auraViolet peer-checked:text-auraCyan peer-checked:bg-auraViolet/10 transition-all">
+                                            $5K+
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Message Area -->
+                            <div>
+                                <label for="message" class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Cuéntanos sobre tus objetivos de escalamiento *</label>
+                                <textarea id="message" name="message" required rows="4" class="w-full bg-auraDark/60 border border-slate-800 hover:border-slate-700 focus:border-auraViolet focus:ring-2 focus:ring-auraViolet/20 rounded-xl px-4 py-3.5 text-slate-200 text-sm outline-none transition-all duration-300 placeholder:text-slate-600 resize-none" placeholder="¿Tienes problemas técnicos en tu embudo, lentitud o quieres incrementar tu ROAS?"></textarea>
+                            </div>
+
+                            <!-- Terms -->
+                            <div class="flex items-start gap-3">
+                                <input type="checkbox" id="terms" required class="mt-1 accent-auraViolet rounded border-slate-800 bg-auraDark">
+                                <label for="terms" class="text-xs text-slate-400 leading-normal cursor-pointer select-none">
+                                    Autorizo a AURA para procesar mis datos únicamente para el envío de propuestas y auditorías comerciales.
+                                </label>
+                            </div>
+
+                            <!-- Submit -->
+                            <button type="submit" class="w-full bg-gradient-to-r from-auraViolet to-indigo-700 hover:from-auraViolet hover:to-auraCyan py-4 font-bold text-white rounded-xl shadow-xl shadow-auraViolet/15 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 group">
+                                <span>Solicitar Auditoría de Conversión</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </button>
+                        </form>
+
+                        <!-- Success view -->
+                        <div id="success-screen" class="hidden absolute inset-0 bg-slateDark border border-slate-800 rounded-2xl flex flex-col items-center justify-center text-center p-8 z-20">
+                            <div class="w-20 h-20 bg-auraCyan/10 border border-auraCyan/30 rounded-full flex items-center justify-center text-auraCyan mb-6 animate-pulse">
+                                <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <h3 class="text-2xl font-display font-bold text-white mb-2">¡Estrategia en Marcha!</h3>
+                            <p class="text-slate-300 text-sm max-w-sm leading-relaxed mb-6" id="success-details-msg">
+                                Tus datos se han registrado correctamente en Google Sheets. Uno de nuestros consultores senior de crecimiento auditará tu arquitectura y te contactará en un plazo menor a 24 horas.
+                            </p>
+                            <button id="reset-form-btn" class="text-sm font-semibold text-auraCyan hover:text-white underline underline-offset-4 focus:outline-none">
+                                Registrar otra consulta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-auraDark border-t border-slate-900 py-16 text-slate-500">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6 text-xs">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-auraViolet flex items-center justify-center text-white font-extrabold text-base">A</div>
+                <span class="text-sm font-display font-extrabold text-white">AURA</span>
+            </div>
+            <p>&copy; 2026 AURA Studio. Todos los derechos reservados. El código que impulsa tu crecimiento.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white">Términos</a>
+                <a href="#" class="hover:text-white">Privacidad</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // PEGA AQUÍ LA URL DE TU WEB APP DE GOOGLE APPS SCRIPT O WEBHOOK DE AUTOMATIZACIÓN:
+        const APPS_SCRIPT_URL = "https://hook.us2.make.com/iaxh6hx98ovayvee5ce8nl6pjgftgf8p";
+
+        // Scroll blur effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('bg-auraDark/90', 'shadow-lg');
+            } else {
+                header.classList.remove('bg-auraDark/90', 'shadow-lg');
+            }
+        });
+
+        // Mobile drawer toggling
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const bar1 = document.getElementById('bar1');
+        const bar2 = document.getElementById('bar2');
+        const bar3 = document.getElementById('bar3');
+        let isDrawerOpen = false;
+
+        function toggleDrawer() {
+            isDrawerOpen = !isDrawerOpen;
+            if (isDrawerOpen) {
+                mobileDrawer.classList.remove('translate-x-full');
+                bar1.classList.add('rotate-45', 'translate-y-2');
+                bar2.classList.add('opacity-0');
+                bar3.classList.add('-rotate-45', '-translate-y-2');
+            } else {
+                mobileDrawer.classList.add('translate-x-full');
+                bar1.classList.remove('rotate-45', 'translate-y-2');
+                bar2.classList.remove('opacity-0');
+                bar3.classList.remove('-rotate-45', '-translate-y-2');
+            }
+        }
+        mobileMenuBtn.addEventListener('click', toggleDrawer);
+
+        // Filter Portfolio Cards
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-auraViolet', 'text-white');
+                    b.classList.add('text-slate-400', 'hover:text-slate-100');
+                });
+                btn.classList.add('bg-auraViolet', 'text-white');
+                btn.classList.remove('text-slate-400', 'hover:text-slate-100');
+
+                const val = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (val === 'all' || card.getAttribute('data-category') === val) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // FAQ Acordeón
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const parent = btn.parentElement;
+                const content = parent.querySelector('.faq-content');
+                const icon = btn.querySelector('.faq-icon');
+                const isAct = parent.classList.contains('border-auraViolet');
+
+                document.querySelectorAll('#faq-container > div').forEach(item => {
+                    item.classList.remove('border-auraViolet', 'bg-slate-900/40');
+                    item.querySelector('.faq-content').style.maxHeight = null;
+                    item.querySelector('.faq-icon').classList.remove('rotate-180');
+                });
+
+                if (!isAct) {
+                    parent.classList.add('border-auraViolet', 'bg-slate-900/40');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+
+        // Form submission integrated perfectly with Make Webhook (JSON POST)
+        const contactForm = document.getElementById('contact-form');
+        const successScreen = document.getElementById('success-screen');
+        const resetFormBtn = document.getElementById('reset-form-btn');
+        const formStatusMsg = document.getElementById('form-status-msg');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white mr-3 inline-block" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Sincronizando con Make...</span>
+            `;
+
+            // Validación de URL por defecto
+            if (APPS_SCRIPT_URL === "REEMPLAZAR_CON_TU_URL_DE_APPS_SCRIPT_AQUI" || APPS_SCRIPT_URL === "") {
+                setTimeout(() => {
+                    successScreen.classList.remove('hidden');
+                    document.getElementById('success-details-msg').innerHTML = `
+                        <span class="text-auraAmber font-bold">⚠️ MODO SIMULACIÓN LOCAL</span><br><br>
+                        Para enviar datos reales, debes pegar tu URL en la línea 468 de este código HTML. El formulario ya está 100% diseñado para conectarse a ella.
+                    `;
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                    contactForm.reset();
+                }, 1000);
+                return;
+            }
+
+            // Mapear los datos de formulario a un objeto de Javascript
+            const formData = new FormData(contactForm);
+            
+            // Traducir los slugs de presupuesto a un texto comprensible en Make
+            const budgetSlugs = {
+                "under_1k": "Menos de $1,000 USD",
+                "1k_3k": "$1,000 - $3,000 USD",
+                "3k_5k": "$3,000 - $5,000 USD",
+                "above_5k": "Más de $5,000 USD"
+            };
+            const selectedBudgetSlug = formData.get('budget');
+            const formattedBudget = budgetSlugs[selectedBudgetSlug] || selectedBudgetSlug;
+
+            const payload = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone') || "No especificado",
+                budget: formattedBudget,
+                message: formData.get('message'),
+                submittedAt: new Date().toISOString()
+            };
+
+            // Enviar petición POST como JSON estructurado
+            fetch(APPS_SCRIPT_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error en el servidor: ${response.statusText}`);
+                }
+                successScreen.classList.remove('hidden');
+                document.getElementById('success-details-msg').innerText = "Tus datos se han procesado de forma impecable en nuestro sistema automatizado de Make. Un consultor senior auditará tu arquitectura y te contactará en menos de 24 horas.";
+                contactForm.reset();
+            })
+            .catch(error => {
+                console.error("Error al enviar al webhook de Make:", error);
+                formStatusMsg.innerHTML = "❌ <span class='text-rose-400'>Error de conexión al enviar el formulario a Make. Revisa la consola para más detalles.</span>";
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+            });
+        });
+
+        resetFormBtn.addEventListener('click', () => {
+            successScreen.classList.add('hidden');
+            formStatusMsg.innerText = "Recibirás tu diagnóstico técnico en menos de 24 horas.";
+        });
+    </script>
+</body>
+</html>
